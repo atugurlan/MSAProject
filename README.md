@@ -15,4 +15,5 @@ Figma: https://www.figma.com/design/Ia21jOG87hbzQQj83ncwl2/Prototype?node-id=0-1
 
     
 Database:
-![image](https://github.com/user-attachments/assets/bdcec88f-946d-4cd6-a7e2-f274ac25c2ef)
+![image](https://github.com/user-attachments/assets/6de944c6-45d0-42be-83da-5a568eb96851)
+
