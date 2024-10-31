@@ -1,0 +1,16 @@
+Endpoints:
+  - user profile:
+	/user-profile   - GET (retrieve all information regarding the profile)
+			- PUT (update its information)
+  - forum (the page for a specific subject) 
+	/forums	- GET (get all the questions for a forum)
+		- POST (post a new question in the forum)
+	/questions	- GET (get all questions)
+			- POST (post an answer to a question)
+			- PUT (update a certain question)
+			- DELETE (delete a certain question)
+	/questions/like	- PUT (like a message)
+	/answers	- PUT (update a message)
+			- DELETE (delete a message)
+  	
+		
