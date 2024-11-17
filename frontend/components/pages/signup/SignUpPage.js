@@ -6,9 +6,16 @@ import * as ImagePicker from 'expo-image-picker';
 import { styles } from './styles';
 import { colors } from '../../../config/colors';
 
+import axios from 'axios';
+import { BASE_URL } from '@env';
+
+ 
 export default function SignUpPage() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const api_url = `${BASE_URL}/api/requests`;
 
   const pickImage = async () => {
     const grantCameraPermission = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -22,12 +29,51 @@ export default function SignUpPage() {
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: false,
       quality: 1,
+      base64: true,
     });
 
     if (!result.canceled) {
       setSelectedImage(result.assets[0].uri); 
     }
   };
+
+  const postRequest = async () => {
+    if(!email || !password || !selectedImage) {
+      Alert.alert('Error', 'All the fields are mandatory. Please fill all of them!');
+      return;
+    }
+
+    try {
+      const response = await fetch(selectedImage);
+      const blob = await response.blob();
+      const base64Image = await blobToBase64(blob);
+
+      const endpointResponse = await axios.post(
+        api_url,
+        {
+          email,
+          password,
+          photo: base64Image
+        },
+      );
+  
+      Alert.alert('Success. Come at a later time to see if the account was accepted');
+      setEmail('');
+      setPassword('');
+      setSelectedImage(null);
+    } catch(error) {
+      Alert.alert('Error', 'Could not create a request for account');
+    }
+  }
+
+  const blobToBase64 = (blob) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result.split(',')[1]); 
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    }
+  );
 
   return (
     <View style={styles.container}>
@@ -40,6 +86,8 @@ export default function SignUpPage() {
           placeholder="School email"
           keyboardType="email-address"
           placeholderTextColor={colors.greyText}
+          value={email}
+          onChangeText={setEmail}
         />
       </View>
 
@@ -50,10 +98,12 @@ export default function SignUpPage() {
           placeholder="Password"
           secureTextEntry={!passwordVisible}
           placeholderTextColor={colors.greyText}
+          value={password}
+          onChangeText={setPassword}
         />
         <TouchableOpacity onPress={() => setPasswordVisible(!passwordVisible)}>
           <Ionicons
-            name={passwordVisible ? 'eye-off-outline' : 'eye-outline'}
+            name={passwordVisible ? 'eye-outline' : 'eye-off-outline'}
             style={styles.icon}
           />
         </TouchableOpacity>
@@ -70,7 +120,7 @@ export default function SignUpPage() {
         <Image source={{ uri: selectedImage }} style={styles.previewImage} />
       )}
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={postRequest}>
         <Text style={styles.buttonText}>Request account</Text>
       </TouchableOpacity>
     </View>
