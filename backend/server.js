@@ -1,8 +1,12 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 require('dotenv').config(); 
 
 const app = express();
+
+app.use(bodyParser.json({ limit: '50mb' })); 
+app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 
 app.use(cors());
 app.use(express.json());
@@ -11,7 +15,11 @@ app.get('/', (req, res) => {
     res.send('Backend is running!');
 });
 
-const PORT = process.env.PORT;
+const PORT = process.env.SERVER_PORT | 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+const requestEndpoints = require('./endpoints/requestEndpoints');
+
+app.use('/api', requestEndpoints);
