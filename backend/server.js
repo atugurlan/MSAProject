@@ -21,5 +21,7 @@ app.listen(PORT, () => {
 });
 
 const requestEndpoints = require('./endpoints/requestEndpoints');
-
 app.use('/api', requestEndpoints);
+
+const userEndpoints = require('./endpoints/userEndpoint');
+app.use('/api', userEndpoints);
