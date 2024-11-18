@@ -3,6 +3,19 @@ const pool = require('../config/db');
 const router = express.Router();
 
 
+router.get('/requests', async (req, res) => {
+    try {
+        const result = await pool.query(
+            `SELECT id, email, password, ENCODE(studentdocument, 'base64') AS studentdocument, status FROM requests`
+        );
+        res.json(result.rows);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+
 router.post('/requests', async (req, res) => {
     const { email, password, photo } = req.body;
 
