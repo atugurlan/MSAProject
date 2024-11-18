@@ -6,7 +6,7 @@ import { styles } from './styles';
 import axios from 'axios';
 import { BASE_URL } from '@env';
 
-export default function LoginPage({}) {
+export default function LoginPage({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const api_url = `${BASE_URL}/api/users/login`;
@@ -32,10 +32,10 @@ export default function LoginPage({}) {
       const user = endpointResponse.data.user;
       
       if( user.isadmin == true) {
-        // navigate to admin page
+        navigation.navigate('AdminLandingPage');
       }
       else {
-        // navigate to user page
+        navigation.navigate('UserLandingPage');
       }
     } catch(error) {
       Alert.alert('Error', 'Could not login into account');
