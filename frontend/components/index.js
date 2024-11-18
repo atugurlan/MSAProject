@@ -3,5 +3,12 @@ import SignUpPage from "./pages/signup/SignUpPage";
 import LoginPage from "./pages/login/LoginPage";
 import AdminLandingPage from "./admin/adminLandingPage/adminLandingPage";
 import UserLandingPage from "./user/userLandingPage/userLandingPage";
+import ForgotPasswordPage from "./pages/forgotpassword/forgotPasswordPage";
 
-export { HomePage, SignUpPage, LoginPage, AdminLandingPage, UserLandingPage };
+export { HomePage,
+         SignUpPage, 
+         LoginPage, 
+         AdminLandingPage, 
+         UserLandingPage, 
+         ForgotPasswordPage
+         };

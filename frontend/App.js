@@ -5,7 +5,8 @@ import { HomePage,
          SignUpPage, 
          LoginPage, 
          AdminLandingPage, 
-         UserLandingPage 
+         UserLandingPage,
+         ForgotPasswordPage
         } from './components';
 
 const Stack = createStackNavigator();
@@ -13,12 +14,13 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator HomePageRoute='homepage'>
+      <Stack.Navigator HomePageRoute='homepage' screenOptions={{headerShown:false}}>
         <Stack.Screen name='HomePage' component={HomePage} />
         <Stack.Screen name="LoginPage" component={LoginPage} />
         <Stack.Screen name="SignUpPage" component={SignUpPage} />
         <Stack.Screen name="AdminLandingPage" component={AdminLandingPage} />
         <Stack.Screen name="UserLandingPage" component={UserLandingPage} />
+        <Stack.Screen name="ForgotPasswordPage" component={ForgotPasswordPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
