@@ -56,4 +56,8 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
+  icon: {
+    size: 20,
+    color: colors.icons,
+  },
 });
