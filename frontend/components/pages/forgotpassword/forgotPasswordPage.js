@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Text, TextInput, View, TouchableOpacity, Alert } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 import { styles } from './styles';
 
@@ -9,7 +10,9 @@ import { BASE_URL } from '@env';
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassowrd] = useState('');
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const api_url = `${BASE_URL}/api/users/changePassword`;
 
   const changePassword = async () => {
@@ -56,15 +59,31 @@ export default function ForgotPasswordPage() {
         <TextInput 
           placeholder='New Password'
           value={password}
+          style={styles.uploadText}
+          secureTextEntry={!passwordVisible}
           onChangeText={setPassword}
         />
+        <TouchableOpacity onPress={() => setPasswordVisible(!passwordVisible)}>
+          <Ionicons
+            name={passwordVisible ? 'eye-outline' : 'eye-off-outline'}
+            style={styles.icon}
+          />
+        </TouchableOpacity>
       </View>
 
       <View style={styles.input}>
         <TextInput 
           placeholder='Confirm New Password' 
           value={confirmPassword}
-          onChangeText={setConfirmPassowrd}/>
+          style={styles.uploadText}
+          secureTextEntry={!confirmPasswordVisible}
+          onChangeText={setConfirmPassword}/>
+        <TouchableOpacity onPress={() => setConfirmPasswordVisible(!confirmPasswordVisible)}>
+          <Ionicons
+            name={confirmPasswordVisible ? 'eye-outline' : 'eye-off-outline'}
+            style={styles.icon}
+          />
+        </TouchableOpacity>
       </View>
 
       <TouchableOpacity style={styles.button} onPress={changePassword}>

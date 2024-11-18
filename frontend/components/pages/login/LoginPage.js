@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Text, TextInput, TouchableOpacity, View, Alert } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 import { styles } from './styles';
 
@@ -9,6 +10,7 @@ import { BASE_URL } from '@env';
 export default function LoginPage({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const api_url = `${BASE_URL}/api/users/login`;
 
   const loginUser = async () => {
@@ -59,9 +61,16 @@ export default function LoginPage({ navigation }) {
         <TextInput
           placeholder='Password'
           style={styles.uploadText}
+          secureTextEntry={!passwordVisible}
           value={password}
           onChangeText={setPassword}
         />
+        <TouchableOpacity onPress={() => setPasswordVisible(!passwordVisible)}>
+          <Ionicons
+            name={passwordVisible ? 'eye-outline' : 'eye-off-outline'}
+            style={styles.icon}
+          />
+        </TouchableOpacity>
       </View>
 
       <TouchableOpacity style={styles.forgotPasswordContainer} onPress={() => navigation.navigate('ForgotPasswordPage')}>

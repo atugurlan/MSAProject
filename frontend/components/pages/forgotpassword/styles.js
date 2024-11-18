@@ -28,6 +28,12 @@ export const styles = StyleSheet.create({
       borderWidth: 1,
       borderColor: '#e0e0e0',
     },
+    uploadText: {
+      flex: 1,
+      fontSize: 16,
+      paddingHorizontal: 10,
+      color: colors.greyText,
+    },
     button: {
       backgroundColor: colors.red,
       width: 0.9 * screenWidth,
@@ -41,5 +47,9 @@ export const styles = StyleSheet.create({
       color: colors.white,
       fontSize: 16,
       fontWeight: 'bold',
+    },
+    icon: {
+      size: 20,
+      color: colors.icons,
     },
   });
