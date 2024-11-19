@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { colors } from '../../../config/colors';
+import { screenWidth, screenHeight } from '../../../config/constants';
 
 export const styles = StyleSheet.create({
     container: {
@@ -13,6 +14,7 @@ export const styles = StyleSheet.create({
         marginBottom: 20,
     },
     requestContainer: {
+        flexDirection: 'row',
         padding: 15,
         marginBottom: 10,
         borderWidth: 1,
@@ -29,4 +31,36 @@ export const styles = StyleSheet.create({
         marginTop: 10,
         borderRadius: 5,
     },
+    leftView: {
+        width: screenWidth * 0.5,
+    },
+    rightView: {
+        width: screenWidth * 0.5,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    acceptButton: {
+        flexDirection: 'row',
+        backgroundColor: '#0f0',
+        borderRadius: 10,
+        height: screenHeight * 0.05,
+        width: screenWidth * 0.2,
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 5,
+    },
+    declineButton: {
+        flexDirection: 'row',
+        backgroundColor: '#f00',
+        borderRadius: 10,
+        height: screenHeight * 0.05,
+        width: screenWidth * 0.2,
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 5,
+    },
+    textButton: {
+        textAlign: 'center',
+        color: colors.white,
+    }
 });
