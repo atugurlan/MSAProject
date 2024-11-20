@@ -62,5 +62,41 @@ export const styles = StyleSheet.create({
     textButton: {
         textAlign: 'center',
         color: colors.white,
+    },
+    modalContainer: {
+        flex: 1,
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    modalImage: {
+        width: screenWidth * 0.9,
+        height: screenHeight * 0.8,
+        resizeMode: 'contain',
+    },
+    closeIcon: {
+        fontSize: 30,
+        color: colors.white,
+        right: -screenWidth * 0.35,
+    },
+    imageContainer: {
+        flexDirection: 'column',
+    },
+    lensContainer: {
+        position: 'absolute',
+        right: 0.15 * screenWidth,
+        bottom: 10,
+        width: screenWidth * 0.09,
+        height: screenHeight * 0.045,
+        backgroundColor: colors.white,
+        borderRadius: 20,
+        borderColor: '#000',
+        borderWidth: 2,
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+    },
+    loopIcon: {
+        fontSize: 20,
     }
 });

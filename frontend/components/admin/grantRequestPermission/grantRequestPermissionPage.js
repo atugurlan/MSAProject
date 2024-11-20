@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, FlatList, Image, TouchableOpacity, Alert, Modal } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import { styles } from './styles';
@@ -10,6 +10,8 @@ import { BASE_URL } from '@env';
 export default function GrantRequestPermissionPage() {
     const [requests, setRequests] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [modalImage, setModalImage] = useState(null);
     const api_url = `${BASE_URL}/api/requests`;
 
     const fetchRequests = async () => {
@@ -49,6 +51,11 @@ export default function GrantRequestPermissionPage() {
         }
     }
 
+    const handleImagePress = (imageUri) => {
+        setModalImage(imageUri);
+        setIsModalVisible(true);
+    };
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Requests:</Text>
@@ -62,10 +69,19 @@ export default function GrantRequestPermissionPage() {
                             <Text style={styles.id}>Request {item.id}:</Text>
                             <Text>Email: {item.email}</Text>
                             <Text>Status: {item.status}</Text>
-                            <Image
-                                source={{ uri: `data:image/png;base64,${item.studentdocument}` }}
-                                style={styles.document}
-                            />
+                            <View>
+                                <View style={styles.imageContainer}>
+                                    <Image
+                                        source={{ uri: `data:image/png;base64,${item.studentdocument}` }}
+                                        style={styles.document}
+                                    />
+                                    <TouchableOpacity onPress={() => handleImagePress(`data:image/png;base64,${item.studentdocument}`)}>
+                                        <View style={styles.lensContainer}>
+                                            <Ionicons name="search" style={styles.loopIcon} />
+                                        </View>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
                         </View>
 
                         <View style={styles.rightView}>
@@ -80,6 +96,23 @@ export default function GrantRequestPermissionPage() {
                     </View>
                 )}
             />
+
+            {modalImage && (
+                <Modal
+                    visible={isModalVisible}
+                    transparent={true}
+                    onRequestClose={() => setIsModalVisible(false)}
+                >
+                    <View style={styles.modalContainer}>
+                        <TouchableOpacity
+                            onPress={() => setIsModalVisible(false)}
+                        >
+                            <Ionicons name="close" style={styles.closeIcon} />
+                        </TouchableOpacity>
+                        <Image source={{ uri: modalImage }} style={styles.modalImage} />
+                    </View>
+                </Modal>
+            )}
         </View>
     );
 };

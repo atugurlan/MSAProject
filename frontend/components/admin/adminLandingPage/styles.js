@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     icon: {
-      size: 20,
+      fontSize: 20,
       color: colors.icons,
     },
     text: {
