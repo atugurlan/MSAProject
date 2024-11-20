@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
       borderColor: '#e0e0e0',
     },
     icon: {
-      size: 20,
+      fontSize: 20,
       color: colors.icons,
     },
     input: {

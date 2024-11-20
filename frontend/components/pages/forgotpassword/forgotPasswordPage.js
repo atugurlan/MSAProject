@@ -21,8 +21,6 @@ export default function ForgotPasswordPage() {
         return;
     }
 
-    console.log('here');
-
     try {
         const endpointResponse = await axios.put(
             api_url,

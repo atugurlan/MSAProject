@@ -57,7 +57,7 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   icon: {
-    size: 20,
+    fontSize: 20,
     color: colors.icons,
   },
 });

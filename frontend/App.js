@@ -6,7 +6,8 @@ import { HomePage,
          LoginPage, 
          AdminLandingPage, 
          UserLandingPage,
-         ForgotPasswordPage
+         ForgotPasswordPage,
+         GrantRequestPermissionPage
         } from './components';
 
 const Stack = createStackNavigator();
@@ -21,6 +22,7 @@ export default function App() {
         <Stack.Screen name="AdminLandingPage" component={AdminLandingPage} />
         <Stack.Screen name="UserLandingPage" component={UserLandingPage} />
         <Stack.Screen name="ForgotPasswordPage" component={ForgotPasswordPage} />
+        <Stack.Screen name="GrantRequestPermissionPage" component={GrantRequestPermissionPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
