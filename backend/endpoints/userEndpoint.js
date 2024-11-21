@@ -3,6 +3,20 @@ const pool = require('../config/db');
 const router = express.Router();
 
 
+router.post("/users/add-user", async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const result = await pool.query(
+            "INSERT INTO users (email, password) VALUES ($1, $2)",
+            [email, password]
+        );
+    } catch(error) {
+        console.log(error);
+    }
+})
+
+
 router.post("/users/login", async (req, res) => {
     const { email, password } = req.body;
 
