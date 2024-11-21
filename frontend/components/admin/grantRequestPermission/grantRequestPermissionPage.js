@@ -13,6 +13,7 @@ export default function GrantRequestPermissionPage() {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [modalImage, setModalImage] = useState(null);
     const api_url = `${BASE_URL}/api/requests`;
+    const add_user_api_url = `${BASE_URL}/api/users/add-user`;
 
     const fetchRequests = async () => {
         try {
@@ -51,6 +52,16 @@ export default function GrantRequestPermissionPage() {
         }
     }
 
+    const addUser = async (email, password) => {
+        await axios.post(
+            add_user_api_url,
+            {
+                email,
+                password
+            }
+        )
+    }
+
     const handleImagePress = (imageUri) => {
         setModalImage(imageUri);
         setIsModalVisible(true);
@@ -85,7 +96,10 @@ export default function GrantRequestPermissionPage() {
                         </View>
 
                         <View style={styles.rightView}>
-                            <TouchableOpacity style={styles.acceptButton} onPress={() => changeStatus(item.id, 'accept')}>
+                            <TouchableOpacity style={styles.acceptButton} onPress={() => {
+                                changeStatus(item.id, 'accept');
+                                addUser(item.email, item.password);
+                            }}>
                                 <Text style={styles.textButton}>Accept</Text>
                             </TouchableOpacity>
 
