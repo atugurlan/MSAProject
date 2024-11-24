@@ -8,10 +8,35 @@ export const styles = StyleSheet.create({
         padding: 20,
         backgroundColor: colors.white,
     },
+    firstRow: {
+        flexDirection: 'row',
+    },
     title: {
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 20,
+    },
+    filterButton: {
+        marginLeft: 250,
+        right: 10,
+        top: 10,
+    },
+    filterIcon: {
+        fontSize: 20,   
+    },
+    dropdown: {
+        width: 0.25 * screenWidth,
+        right: 0.2 * screenWidth,
+    },
+    filterItem: {
+        flexDirection: 'row',
+    },
+    filterIcon: {
+        fontSize: 20,
+        marginRight: 10,
+    },
+    filterText: {
+        fontSize: 15,
     },
     requestContainer: {
         flexDirection: 'row',
@@ -38,6 +63,7 @@ export const styles = StyleSheet.create({
         width: screenWidth * 0.5,
         alignItems: 'center',
         justifyContent: 'center',
+        flex: 1,
     },
     acceptButton: {
         flexDirection: 'row',
@@ -62,6 +88,11 @@ export const styles = StyleSheet.create({
     textButton: {
         textAlign: 'center',
         color: colors.white,
+    },
+    statusText: {
+        fontStyle: 'italic',
+        fontSize: 16,
+        lineHeight: 20,
     },
     modalContainer: {
         flex: 1,
