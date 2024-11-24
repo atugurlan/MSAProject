@@ -7,7 +7,10 @@ import { HomePage,
          AdminLandingPage, 
          UserLandingPage,
          ForgotPasswordPage,
-         GrantRequestPermissionPage
+         GrantRequestPermissionPage,
+         ManageFacultiesPage,
+         AddFacultyPage,
+         ManageDepartmentsPage
         } from './components';
 
 const Stack = createStackNavigator();
@@ -23,6 +26,9 @@ export default function App() {
         <Stack.Screen name="UserLandingPage" component={UserLandingPage} />
         <Stack.Screen name="ForgotPasswordPage" component={ForgotPasswordPage} />
         <Stack.Screen name="GrantRequestPermissionPage" component={GrantRequestPermissionPage} />
+        <Stack.Screen name="ManageFacultiesPage" component={ManageFacultiesPage} />
+        <Stack.Screen name="AddFacultyPage" component={AddFacultyPage} />
+        <Stack.Screen name="ManageDepartmentsPage" component={ManageDepartmentsPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
