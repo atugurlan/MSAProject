@@ -4,9 +4,12 @@ const router = express.Router();
 
 
 router.get('/departments', async (req, res) => {
+    const { facultyid } = req.query;
+
     try {
         const result = await pool.query(
-            'SELECT * FROM departments;'
+            'SELECT * FROM departments WHERE faculty_id = $1;',
+            [facultyid]
         );
         res.json(result.rows);
     } catch (err) {

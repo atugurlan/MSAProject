@@ -10,7 +10,8 @@ import { HomePage,
          GrantRequestPermissionPage,
          ManageFacultiesPage,
          AddFacultyPage,
-         ManageDepartmentsPage
+         ManageDepartmentsPage,
+         AddDepartmentPage
         } from './components';
 
 const Stack = createStackNavigator();
@@ -29,6 +30,7 @@ export default function App() {
         <Stack.Screen name="ManageFacultiesPage" component={ManageFacultiesPage} />
         <Stack.Screen name="AddFacultyPage" component={AddFacultyPage} />
         <Stack.Screen name="ManageDepartmentsPage" component={ManageDepartmentsPage} />
+        <Stack.Screen name="AddDepartmentPage" component={AddDepartmentPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );

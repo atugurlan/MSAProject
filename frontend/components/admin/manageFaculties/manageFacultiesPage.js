@@ -44,7 +44,7 @@ export default ManageFacultiesPage = ({ navigation }) => {
           data={faculties}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
-            <TouchableOpacity style={styles.listItem} onPress={() => navigation.navigate('ManageDepartmentsPage', {facultyID: item.id, facultyName: item.name})}>
+            <TouchableOpacity style={styles.listItem} onPress={() => navigation.navigate('ManageDepartmentsPage', {id: item.id.toString(), facultyName: item.name})}>
               <View>
                 <Text>Faculty {item.id}</Text>
                 <Text>{item.name} ({item.shortname})</Text>

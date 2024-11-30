@@ -8,6 +8,7 @@ import GrantRequestPermissionPage from "./admin/grantRequestPermission/grantRequ
 import ManageFacultiesPage from "./admin/manageFaculties/manageFacultiesPage";
 import AddFacultyPage from "./admin/addFaculty/addFacultyPage";
 import ManageDepartmentsPage from "./admin/manageDepartments/manageDepartmentsPage";
+import AddDepartmentPage from "./admin/addDepartment/addDepartmentPage";
 
 export { HomePage,
          SignUpPage, 
@@ -18,5 +19,6 @@ export { HomePage,
          GrantRequestPermissionPage,
          ManageFacultiesPage,
          AddFacultyPage,
-         ManageDepartmentsPage
+         ManageDepartmentsPage,
+         AddDepartmentPage,
          };
