@@ -19,4 +19,23 @@ router.get('/departments', async (req, res) => {
 });
 
 
+router.post('/departments', async (req, res) => {
+    const { name, facultyID } = req.body;
+
+    if (!name || !facultyID ) {
+        return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    try {
+        const result = await pool.query(
+            'INSERT INTO departments (department_name, faculty_id) VALUES ($1, $2)',
+            [name, facultyID]
+        );
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ message: 'Failed to create request' });
+    }
+});
+
+
 module.exports = router;
