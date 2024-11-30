@@ -1,5 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import {Text, View, FlatList, TouchableOpacity} from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 import { styles } from './styles';
 
@@ -40,10 +41,13 @@ export default ManageDepartmentsPage = ({ route, navigation }) => {
           data={departments}
           keyExtractor={(item) => item.department_id.toString()}
           renderItem={({ item }) => (
-            <View style={styles.listItem}>
-              <Text style={styles.text}>Department {item.department_id}</Text>
-              <Text style={styles.text}>{item.department_name}</Text>
-            </View>
+            <TouchableOpacity style={styles.listItem} onPress={() => navigation.navigate('SubjectsHandlingPage', {departmentName: item.department_name})}>
+              <View style={styles.leftSide}>
+                <Text style={styles.text}>Department {item.department_id}</Text>
+                <Text style={styles.text}>{item.department_name}</Text>
+              </View>
+              <Ionicons name="arrow-forward" style={styles.icon} />
+            </TouchableOpacity>
           )}
         />
       </View>

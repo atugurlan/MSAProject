@@ -1,7 +1,9 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-const SubjectsHandlingPage = () => {
+const SubjectsHandlingPage = ({ route }) => {
+  const { departmentName } = route.params;
+
   return (
     <View
       style={{
@@ -9,7 +11,7 @@ const SubjectsHandlingPage = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Text>subjects</Text>
+      <Text>{departmentName}</Text>
     </View>
   );
 };

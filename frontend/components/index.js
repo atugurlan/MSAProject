@@ -9,6 +9,7 @@ import ManageFacultiesPage from "./admin/manageFaculties/manageFacultiesPage";
 import AddFacultyPage from "./admin/addFaculty/addFacultyPage";
 import ManageDepartmentsPage from "./admin/manageDepartments/manageDepartmentsPage";
 import AddDepartmentPage from "./admin/addDepartment/addDepartmentPage";
+import SubjectsHandlingPage from "./admin/subjectsHandling/subjectsHandlingPage";
 
 export { HomePage,
          SignUpPage, 
@@ -21,4 +22,5 @@ export { HomePage,
          AddFacultyPage,
          ManageDepartmentsPage,
          AddDepartmentPage,
+         SubjectsHandlingPage
          };

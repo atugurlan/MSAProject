@@ -20,7 +20,12 @@ export const styles = StyleSheet.create({
     listContainer: {
         width: screenWidth,
     },
+    leftSide: {
+        width: screenWidth * 0.8,
+    },
     listItem: {
+        width: screenWidth,
+        flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         marginVertical: 10,
@@ -30,6 +35,7 @@ export const styles = StyleSheet.create({
     text: {
         fontSize: 16,
         textAlign: 'center',
+        flex: 1,
     },
     button: {
         flexDirection: 'row',
@@ -44,5 +50,9 @@ export const styles = StyleSheet.create({
         borderRadius: 10, 
         alignItems: 'center',
         justifyContent: 'center',
-      },
+    },
+    icon: {
+        fontSize: 20,
+        color: colors.icons,
+    }
   });
