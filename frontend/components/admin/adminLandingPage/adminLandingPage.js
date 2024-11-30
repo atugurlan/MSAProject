@@ -10,11 +10,12 @@ export default function AdminLandingPage({ navigation }) {
 
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('GrantRequestPermissionPage')}>
         <Text style={styles.text}>Manage Requests</Text>
+        <Ionicons name="arrow-forward" style={styles.icon} />
+      </TouchableOpacity>
 
-        <Ionicons
-            name="arrow-forward"
-            style={styles.icon}
-          />
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ManageFacultiesPage')}>
+        <Text style={styles.text}>Manage Faculties</Text>
+        <Ionicons name="arrow-forward" style={styles.icon} />
       </TouchableOpacity>
     </View>
   );

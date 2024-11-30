@@ -25,3 +25,9 @@ app.use('/api', requestEndpoints);
 
 const userEndpoints = require('./endpoints/userEndpoint');
 app.use('/api', userEndpoints);
+
+const facultyEndpoints = require('./endpoints/facultyEndpoints');
+app.use('/api', facultyEndpoints);
+
+const departmentEndpoints = require('./endpoints/departmentEndpoints');
+app.use('/api', departmentEndpoints);
