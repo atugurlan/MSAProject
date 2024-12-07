@@ -11,6 +11,7 @@ import ManageDepartmentsPage from "./admin/departments/manageDepartments/manageD
 import AddDepartmentPage from "./admin/departments/addDepartment/addDepartmentPage";
 import SubjectsHandlingPage from "./admin/subjects/subjectsHandling/subjectsHandlingPage";
 import SubjectInformationPage from "./admin/subjects/subjectInformation/subjectInformationPage";
+import AddSubjectPage from "./admin/subjects/addSubject/addSubjectPage";
 
 export { HomePage,
          SignUpPage, 
@@ -24,5 +25,6 @@ export { HomePage,
          ManageDepartmentsPage,
          AddDepartmentPage,
          SubjectsHandlingPage,
-         SubjectInformationPage
+         SubjectInformationPage,
+         AddSubjectPage
          };

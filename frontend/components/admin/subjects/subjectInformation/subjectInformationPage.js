@@ -22,7 +22,7 @@ export default function SubjectInformationPage({ route }) {
 
       <Text>Lab assistances:</Text>
       <FlatList 
-          data={subject.lab_assistances}
+          data={subject.lab_assistants}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) => (
             <View>

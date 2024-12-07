@@ -53,6 +53,12 @@ const SubjectsHandlingPage = ({ route, navigation }) => {
         <Text style={styles.title}>{departmentName}</Text>
       </View>
 
+      <View>
+        <TouchableOpacity onPress={() => navigation.navigate('AddSubjectPage', { departmentID: departmentID })}>
+          <Text>Add New Subject</Text>
+        </TouchableOpacity>
+      </View>
+
       <FlatList
         data={years}
         keyExtractor={(year) => year}
