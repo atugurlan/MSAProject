@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
-import { colors } from "../../../config/colors";
-import { screenHeight, screenWidth } from "../../../config/constants";
+import { colors } from "../../../../config/colors";
+import { screenHeight, screenWidth } from "../../../../config/constants";
 
 export const styles = StyleSheet.create({
     container: {
@@ -22,6 +22,9 @@ export const styles = StyleSheet.create({
     },
     leftSide: {
         width: screenWidth * 0.8,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     listItem: {
         width: screenWidth,
@@ -34,7 +37,7 @@ export const styles = StyleSheet.create({
     },
     text: {
         fontSize: 16,
-        textAlign: 'center',
+        // textAlign: 'center',
         flex: 1,
     },
     button: {

@@ -10,6 +10,7 @@ export default function AddDepartmentPage({ route, navigation }) {
   const { facultyID } = route.params;
 
   const [name, setName] = useState('');
+  const [years, setYears] = useState('');
   const api_url = `${BASE_URL}/api/departments`;
 
   const postDepartment = async () => {
@@ -23,6 +24,7 @@ export default function AddDepartmentPage({ route, navigation }) {
         api_url,
         {
           name,
+          years,
           facultyID
         }
       );
@@ -42,11 +44,21 @@ export default function AddDepartmentPage({ route, navigation }) {
       <View style={styles.forum}>
         <View style={styles.inputContainer}>
           <Text>Name</Text>
-          
+      
           <TextInput 
             style={styles.input}
             value={name}
             onChangeText={setName}
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Text>Years</Text>
+          
+          <TextInput 
+            style={styles.input}
+            value={years}
+            onChangeText={setYears}
           />
         </View>
 

@@ -41,7 +41,7 @@ export default ManageDepartmentsPage = ({ route, navigation }) => {
           data={departments}
           keyExtractor={(item) => item.department_id.toString()}
           renderItem={({ item }) => (
-            <TouchableOpacity style={styles.listItem} onPress={() => navigation.navigate('SubjectsHandlingPage', {departmentName: item.department_name})}>
+            <TouchableOpacity style={styles.listItem} onPress={() => navigation.navigate('SubjectsHandlingPage', {departmentID: item.department_id, departmentName: item.department_name, departmentYear: item.years})}>
               <View style={styles.leftSide}>
                 <Text style={styles.text}>Department {item.department_id}</Text>
                 <Text style={styles.text}>{item.department_name}</Text>

@@ -20,16 +20,16 @@ router.get('/departments', async (req, res) => {
 
 
 router.post('/departments', async (req, res) => {
-    const { name, facultyID } = req.body;
+    const { name, years, facultyID } = req.body;
 
-    if (!name || !facultyID ) {
+    if (!name || !years || !facultyID ) {
         return res.status(400).json({ message: 'All fields are required' });
     }
 
     try {
         const result = await pool.query(
-            'INSERT INTO departments (department_name, faculty_id) VALUES ($1, $2)',
-            [name, facultyID]
+            'INSERT INTO departments (department_name, years, faculty_id) VALUES ($1, $2)',
+            [name, years, facultyID]
         );
     } catch (error) {
         console.error(error.message);

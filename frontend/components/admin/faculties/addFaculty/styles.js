@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
-import { colors } from "../../../config/colors";
-import { screenHeight, screenWidth } from "../../../config/constants";
+import { colors } from "../../../../config/colors";
+import { screenHeight, screenWidth } from "../../../../config/constants";
 
 export const styles = StyleSheet.create({
   title: {
