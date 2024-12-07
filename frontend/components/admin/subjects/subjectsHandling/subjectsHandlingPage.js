@@ -64,7 +64,7 @@ const SubjectsHandlingPage = ({ route, navigation }) => {
                 <TouchableOpacity
                   key={subject.subject_id}
                   style={styles.listItem}
-                  onPress={() => navigation.navigate('SubjectInformationPage', {subjectName: subject.name, subjectID: subject.subject_id})}
+                  onPress={() => navigation.navigate('SubjectInformationPage', { subject })}
                 >
                   <View style={styles.leftSide}>
                     <Text style={styles.text}>{subject.subject_id}</Text>
