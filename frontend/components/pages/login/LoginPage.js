@@ -37,7 +37,12 @@ export default function LoginPage({ navigation }) {
         navigation.navigate('AdminLandingPage');
       }
       else {
-        navigation.navigate('UserLandingPage');
+        if( user.isprofilecompleted ) {
+          navigation.navigate('UserLandingPage');
+        }
+        else {
+          navigation.navigate('CompleteProfilePage', {userID: user.id});
+        }
       }
     } catch(error) {
       Alert.alert('Error', 'Could not login into account');

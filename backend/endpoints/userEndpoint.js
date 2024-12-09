@@ -86,4 +86,36 @@ router.put('/users/changePassword', async (req, res) => {
     }
 })
 
+
+router.put("/users/completeProfile", async (req, res) => {
+    const { userID, firstName, lastName, faculty, department, year, selectedSubjects } = req.body;
+
+    if( !firstName || !lastName || !faculty || !department  || selectedSubjects.length == 0) {
+        return res.status(400).json({ message: 'All fiels are required and should be filled.'});
+    }
+
+    try {
+        const userRows = await pool.query( 
+            "SELECT * FROM users WHERE id = $1",
+            [userID]
+        );
+
+        if( userRows.rowCount !== 1 ) {
+            res.status(400).json({ message: "User does not exist" });
+        }
+
+        const user = userRows.rows[0];
+
+        const result = await pool.query(
+            "UPDATE users SET firstname = $1, lastname = $2, facultyid = $3, department = $4, year = $5, subjects = $6, isprofilecompleted = $7 WHERE id = $8",
+            [firstName, lastName, faculty, department, year, selectedSubjects, true, userID]
+        );        
+
+        res.status(200).json({ message: "Successfully changed password" });
+    } catch(error) {
+        console.log(error);
+        res.status(500).json({ message: "Failed to change password" })
+    }
+})
+
 module.exports = router;
