@@ -12,6 +12,7 @@ import AddDepartmentPage from "./admin/departments/addDepartment/addDepartmentPa
 import SubjectsHandlingPage from "./admin/subjects/subjectsHandling/subjectsHandlingPage";
 import SubjectInformationPage from "./admin/subjects/subjectInformation/subjectInformationPage";
 import AddSubjectPage from "./admin/subjects/addSubject/addSubjectPage";
+import CompleteProfilePage from "./user/completeProfile/completeProfilePage";
 
 export { HomePage,
          SignUpPage, 
@@ -26,5 +27,6 @@ export { HomePage,
          AddDepartmentPage,
          SubjectsHandlingPage,
          SubjectInformationPage,
-         AddSubjectPage
+         AddSubjectPage,
+         CompleteProfilePage
          };
