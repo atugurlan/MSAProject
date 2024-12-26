@@ -15,6 +15,8 @@ import AddSubjectPage from "./admin/subjects/addSubject/addSubjectPage";
 import CompleteProfilePage from "./user/completeProfile/completeProfilePage";
 import AllForumsPage from "./user/allForums/AllForumsPage";
 import ForumPage from "./user/forum/ForumPage";
+import AddQuestionPage from "./user/addQuestion/AddQuestionPage";
+import SeeConversationPage from "./user/seeConversation/SeeConversationPage";
 
 export { HomePage,
          SignUpPage, 
@@ -32,5 +34,7 @@ export { HomePage,
          AddSubjectPage,
          CompleteProfilePage,
          AllForumsPage,
-         ForumPage
+         ForumPage,
+         AddQuestionPage,
+         SeeConversationPage
          };

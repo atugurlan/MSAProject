@@ -34,3 +34,6 @@ app.use('/api', departmentEndpoints);
 
 const subjectEndpoints = require('./endpoints/subjectEndpoints');
 app.use('/api', subjectEndpoints);
+
+const questionEndpoints = require('./endpoints/questionsEndpoints');
+app.use('/api', questionEndpoints);

@@ -17,7 +17,9 @@ import { HomePage,
          AddSubjectPage,
          CompleteProfilePage,
          AllForumsPage,
-         ForumPage
+         ForumPage,
+         AddQuestionPage,
+         SeeConversationPage,
         } from './components';
 
 const Stack = createStackNavigator();
@@ -43,6 +45,8 @@ export default function App() {
         <Stack.Screen name="CompleteProfilePage" component={CompleteProfilePage} />
         <Stack.Screen name="AllForumsPage" component={AllForumsPage} />
         <Stack.Screen name="ForumPage" component={ForumPage} />
+        <Stack.Screen name="AddQuestionPage" component={AddQuestionPage} />
+        <Stack.Screen name="SeeConversationPage" component={SeeConversationPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
