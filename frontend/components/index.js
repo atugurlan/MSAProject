@@ -13,6 +13,8 @@ import SubjectsHandlingPage from "./admin/subjects/subjectsHandling/subjectsHand
 import SubjectInformationPage from "./admin/subjects/subjectInformation/subjectInformationPage";
 import AddSubjectPage from "./admin/subjects/addSubject/addSubjectPage";
 import CompleteProfilePage from "./user/completeProfile/completeProfilePage";
+import AllForumsPage from "./user/allForums/AllForumsPage";
+import ForumPage from "./user/forum/ForumPage";
 
 export { HomePage,
          SignUpPage, 
@@ -28,5 +30,7 @@ export { HomePage,
          SubjectsHandlingPage,
          SubjectInformationPage,
          AddSubjectPage,
-         CompleteProfilePage
+         CompleteProfilePage,
+         AllForumsPage,
+         ForumPage
          };

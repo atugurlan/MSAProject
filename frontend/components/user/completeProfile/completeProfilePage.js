@@ -19,7 +19,7 @@ export default CompleteProfilePage = ({ route, navigation }) => {
   const [selectedSubjects, setSelectedSubjects] = useState([]);
   const faculties_api_url = `${BASE_URL}/api/faculties`;
   const departments_api_url = `${BASE_URL}/api/departments`;
-  const subjects_api_url = `${BASE_URL}/api/subjects`;
+  const subjects_api_url = `${BASE_URL}/api/subjectsFromDepartment`;
   const complete_profile_api_url = `${BASE_URL}/api/users/completeProfile`;
 
   const [facultyOpen, setFacultyOpen] = useState(false);

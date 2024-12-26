@@ -4,6 +4,19 @@ const router = express.Router();
 
 
 router.get('/subjects', async (req, res) => {
+    try {
+        const result = await pool.query(
+            'SELECT * FROM subjects;',
+        );
+        res.json(result.rows);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+
+router.get('/subjectsFromDepartment', async (req, res) => {
     const { departmentID } = req.query;
 
     try {
@@ -12,8 +25,22 @@ router.get('/subjects', async (req, res) => {
             [departmentID]
         );
         res.json(result.rows);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
 
-        console.log(result.rows);
+
+router.get('/subjectsNames', async (req, res) => {
+    const { subjectsID } = req.query;
+
+    try {
+        const result = await pool.query(
+            'SELECT * FROM subjects WHERE subject_id = ANY($1::int[]);',
+            [subjectsID]
+        );
+        res.json(result.rows);
     } catch (err) {
         console.error(err.message);
         res.status(500).json({ message: 'Server error' });

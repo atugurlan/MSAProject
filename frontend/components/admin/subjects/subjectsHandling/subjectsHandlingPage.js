@@ -11,7 +11,7 @@ const SubjectsHandlingPage = ({ route, navigation }) => {
   const { departmentID, departmentName, departmentYear } = route.params;
 
   const [subjects, setSubjects] = useState([]);
-  const api_url = `${BASE_URL}/api/subjects`;
+  const api_url = `${BASE_URL}/api/subjectsFromDepartment`;
 
   const getSubjects = async () => {
     try {
