@@ -18,7 +18,7 @@ export default function AddSubjectPage({ route, navigation }) {
   const [labAssistants, setLabAssistants] = useState([]);
   const [newLabAssistant, setNewLabAssistant] = useState('');
 
-  const api_url = `${BASE_URL}/api/subjects`;
+  const api_url = `${BASE_URL}/api/subjectsFromDepartment`;
 
   const handleAddLabAssistant = () => {
     if (newLabAssistant.trim() === '') return; 

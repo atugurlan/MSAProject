@@ -32,13 +32,13 @@ export default function LoginPage({ navigation }) {
       setPassword('');
 
       const user = endpointResponse.data.user;
-      
+   
       if( user.isadmin == true) {
         navigation.navigate('AdminLandingPage');
       }
       else {
         if( user.isprofilecompleted ) {
-          navigation.navigate('UserLandingPage');
+          navigation.navigate('UserLandingPage', {user: user});
         }
         else {
           navigation.navigate('CompleteProfilePage', {userID: user.id});
