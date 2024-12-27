@@ -68,14 +68,11 @@ export const styles = StyleSheet.create({
     },
     noQuestions: {
         flex: 1,
-        justifyContent: 'center',
         alignItems: 'center',
+        paddingTop: 20,
     },
     noQuestionsText: {
         fontSize: 16,
-    },
-    list: {
-        paddingBottom: 16,
     },
     floatingButton: {
         position: 'absolute', 

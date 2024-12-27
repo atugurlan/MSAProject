@@ -60,8 +60,8 @@ export default function ForumPage({ navigation, route }) {
                           )}
                     />
                 ) : (
-                    <View>
-                        <Text>No questions available</Text>
+                    <View style={styles.noQuestions}>
+                        <Text style={styles.noQuestionsText}>~ No questions available ~</Text>
                     </View>
                 )}
             </View>
