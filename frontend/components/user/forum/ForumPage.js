@@ -52,7 +52,7 @@ export default function ForumPage({ navigation, route }) {
                                 </View>
                                 <View style={styles.bottomContainer}>
                                     <Text style={styles.questionText}>{item.question_title}</Text>
-                                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("SeeConversationPage")}>
+                                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("SeeConversationPage", {questionId: item.question_id})}>
                                         <Text style={styles.buttonText}>See conversation</Text>
                                     </TouchableOpacity>
                                 </View>

@@ -21,10 +21,25 @@ export default function AddQuestionPage({ navigation, route }) {
 
     const api_url = `${BASE_URL}/api/question`;
 
+    const getFileType = (uri) => {
+        const extension = uri.split('.').pop().toLowerCase();
+        switch (extension) {
+            case 'jpg':
+            case 'jpeg':
+            case 'png':
+            case 'gif':
+                return 'image';
+            case 'pdf':
+                return 'pdf';
+            default:
+                return 'unknown';
+        }
+    };
+
     const pickFiles = async () => {
         try {
             const result = await DocumentPicker.getDocumentAsync({
-                type: ['image/*', 'application/pdf', 'application/msword', 'application/vnd.ms-powerpoint'],
+                type: ['*/*'],
                 multiple: true,
             });
 
@@ -34,7 +49,13 @@ export default function AddQuestionPage({ navigation, route }) {
             }
 
             if (result.assets && result.assets.length > 0) {
-                setFiles((prevFiles) => [...prevFiles, ...result.assets]);
+                const newFiles = result.assets.map((file) => ({
+                    uri: file.uri,
+                    name: file.name || 'Unnamed file',
+                    type: getFileType(file.uri),
+                }));
+                
+                setFiles((prevFiles) => [...prevFiles, ...newFiles]);
             }
         } catch (error) {
             Alert.alert('Error', 'An error occurred while picking the file.');
@@ -72,6 +93,7 @@ export default function AddQuestionPage({ navigation, route }) {
 
         const filesBase64 = await Promise.all(
             files.map(async (file) => {
+                console.log(file);
                 const base64 = await readFileAsBase64(file.uri);
                 
                 if (!base64) {
@@ -79,7 +101,10 @@ export default function AddQuestionPage({ navigation, route }) {
                 }
                 
                 return {
-                    base64,
+                    type: getFileType(file.uri),
+                    uri: file.uri,
+                    name: file.name,
+                    base64: base64,
                 };
             })
         );
