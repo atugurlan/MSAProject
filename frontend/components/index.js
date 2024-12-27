@@ -1,3 +1,4 @@
+import { UserProvider } from "./context/UserContext";
 import HomePage from "./pages/homepage/homepage";
 import SignUpPage from "./pages/signup/SignUpPage";
 import LoginPage from "./pages/login/LoginPage";
@@ -18,7 +19,8 @@ import ForumPage from "./user/forum/ForumPage";
 import AddQuestionPage from "./user/addQuestion/AddQuestionPage";
 import SeeConversationPage from "./user/seeConversation/SeeConversationPage";
 
-export { HomePage,
+export { UserProvider,
+         HomePage,
          SignUpPage, 
          LoginPage, 
          AdminLandingPage, 

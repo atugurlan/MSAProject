@@ -7,11 +7,15 @@ import { styles } from './styles';
 import axios from 'axios';
 import { BASE_URL } from '@env';
 
+import { useUser } from '../../context/UserContext';
+
 export default function LoginPage({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
   const api_url = `${BASE_URL}/api/users/login`;
+
+  const { setUser } = useUser(); 
 
   const loginUser = async () => {
     if(!email || !password ) {
@@ -32,6 +36,8 @@ export default function LoginPage({ navigation }) {
       setPassword('');
 
       const user = endpointResponse.data.user;
+
+      setUser(user);
    
       if( user.isadmin == true) {
         navigation.navigate('AdminLandingPage');

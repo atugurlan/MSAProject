@@ -66,7 +66,7 @@ export default function ForumPage({ navigation, route }) {
                 )}
             </View>
 
-            <TouchableOpacity style={styles.floatingButton} onPress={() => navigation.navigate("AddQuestionPage")}>
+            <TouchableOpacity style={styles.floatingButton} onPress={() => navigation.navigate("AddQuestionPage", {subjectID: subjectID})}>
                 <Ionicons name="add-circle" style={styles.icon}/>
             </TouchableOpacity>
         </View>
