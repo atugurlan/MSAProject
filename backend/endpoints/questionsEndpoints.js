@@ -28,7 +28,6 @@ router.get('/question', async (req, res) => {
            [questionId]
         );
 
-        console.log(result.rows);
         if (result.rows.length === 0) {
             return res.status(404).json({ message: 'Question not found' });
         }
