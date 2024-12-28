@@ -7,6 +7,8 @@ import { styles } from './styles';
 import axios from 'axios';
 import { BASE_URL } from '@env';
 
+import AnswersPage from '../answers/answersPage';
+
 export default function SeeConversationPage({ route }) {
     const { questionId } = route.params;
 
@@ -197,6 +199,10 @@ export default function SeeConversationPage({ route }) {
                     </TouchableOpacity>
                 </View>
             </Modal>
+
+            <View>
+                <AnswersPage questionID={questionId}></AnswersPage>
+            </View>
         </View>
     );
 }
