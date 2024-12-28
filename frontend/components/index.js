@@ -1,3 +1,4 @@
+import { UserProvider } from "./context/UserContext";
 import HomePage from "./pages/homepage/homepage";
 import SignUpPage from "./pages/signup/SignUpPage";
 import LoginPage from "./pages/login/LoginPage";
@@ -15,8 +16,11 @@ import AddSubjectPage from "./admin/subjects/addSubject/addSubjectPage";
 import CompleteProfilePage from "./user/completeProfile/completeProfilePage";
 import AllForumsPage from "./user/allForums/AllForumsPage";
 import ForumPage from "./user/forum/ForumPage";
+import AddQuestionPage from "./user/addQuestion/AddQuestionPage";
+import SeeConversationPage from "./user/seeConversation/SeeConversationPage";
 
-export { HomePage,
+export { UserProvider,
+         HomePage,
          SignUpPage, 
          LoginPage, 
          AdminLandingPage, 
@@ -32,5 +36,7 @@ export { HomePage,
          AddSubjectPage,
          CompleteProfilePage,
          AllForumsPage,
-         ForumPage
+         ForumPage,
+         AddQuestionPage,
+         SeeConversationPage
          };
