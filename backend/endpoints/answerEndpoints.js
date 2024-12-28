@@ -19,4 +19,18 @@ router.get('/answers', async (req, res) => {
 });
 
 
+router.post('/answers', async (req, res) => {
+    const { questionID, student_name, answer_text } = req.body;
+
+    try {
+        const result = await pool.query(
+            'INSERT INTO answers (question_id, student_name, answer_text) VALUES ($1, $2, $3);',
+            [questionID, student_name, answer_text]
+        );
+    } catch (err) {
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+
 module.exports = router;

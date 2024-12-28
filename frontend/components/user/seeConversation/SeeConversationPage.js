@@ -200,7 +200,7 @@ export default function SeeConversationPage({ route }) {
                 </View>
             </Modal>
 
-            <View>
+            <View style={ {flex: 1} }>
                 <AnswersPage questionID={questionId}></AnswersPage>
             </View>
         </View>
