@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useUser } from '../../context/UserContext';
+import { useLogout } from '../../context/LogoutContext';
 
 import { Ionicons } from '@expo/vector-icons';
 
 import { styles } from './styles';
 
-// <ion-icon name="notifications-outline"></ion-icon>
 
 export default function Navbar({ currentRoute }) {
     const user = useUser().user;
     const navigation = useNavigation();
+    const { showLogoutModal } = useLogout();
 
     const handlePress = (page) => {
         navigation.navigate(page);
@@ -43,7 +44,7 @@ export default function Navbar({ currentRoute }) {
                                     <Text style={[styles.buttonText, isUserOnPage('ManageFacultiesPage') && styles.activeButtonText]}>Faculties</Text>
                                 </TouchableOpacity>
 
-                                <TouchableOpacity style={[styles.button, isUserOnPage('LogoutPage') && styles.activeButton]} onPress={() => handlePress('LogoutPage')}>
+                                <TouchableOpacity style={[styles.button, isUserOnPage('LogoutPage') && styles.activeButton]} onPress={() => showLogoutModal()}>
                                     <Ionicons name="log-out-outline" style={[styles.icon, isUserOnPage('LogoutPage') && styles.activeIcon]}></Ionicons>
                                     <Text style={[styles.buttonText, isUserOnPage('LogoutPage') && styles.activeButtonText]}>Log out</Text>
                                 </TouchableOpacity>
@@ -65,7 +66,7 @@ export default function Navbar({ currentRoute }) {
                                     <Text style={[styles.buttonText, isUserOnPage('ProfilePage') && styles.activeButtonText]}>Profile</Text>
                                 </TouchableOpacity>
 
-                                <TouchableOpacity style={[styles.button, isUserOnPage('LogoutPage') && styles.activeButton]} onPress={() => handlePress('LogoutPage')}>
+                                <TouchableOpacity style={[styles.button, isUserOnPage('LogoutPage') && styles.activeButton]} onPress={() => showLogoutModal()}>
                                     <Ionicons name="log-out-outline" style={[styles.icon, isUserOnPage('LogoutPage') && styles.activeIcon]}></Ionicons>
                                     <Text style={[styles.buttonText, isUserOnPage('LogoutPage') && styles.activeButtonText]}>Log out</Text>
                                 </TouchableOpacity>
