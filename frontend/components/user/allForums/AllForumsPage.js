@@ -6,9 +6,10 @@ import { styles } from './styles';
 
 import axios from 'axios';
 import { BASE_URL } from '@env';
+import { useUser } from '../../context/UserContext';
 
-export default function AllForumsPage({ navigation, route }) {
-    const { userInfo } = route.params;
+export default function AllForumsPage({ navigation }) {
+    const userInfo = useUser().user;
     const subjectsID = userInfo.subjects;
 
     const [subjectNames, setSubjectNames] = useState([]);

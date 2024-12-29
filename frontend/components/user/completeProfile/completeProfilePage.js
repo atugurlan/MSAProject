@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, TextInput, Button, Text, TouchableOpacity } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Ionicons } from '@expo/vector-icons';
+import { useUser } from '../../context/UserContext';
 
 import { styles } from './styles';
 
@@ -9,8 +10,9 @@ import { BASE_URL } from '@env';
 import axios from 'axios';
 
 
-export default CompleteProfilePage = ({ route, navigation }) => {
-  const { userID } = route.params;
+export default CompleteProfilePage = ({ navigation }) => {
+  const user = useUser().user;
+  const userID = user.id;
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [faculty, setFaculty] = useState('');

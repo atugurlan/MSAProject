@@ -44,10 +44,10 @@ export default function LoginPage({ navigation }) {
       }
       else {
         if( user.isprofilecompleted ) {
-          navigation.navigate('UserLandingPage', {user: user});
+          navigation.navigate('UserLandingPage');
         }
         else {
-          navigation.navigate('CompleteProfilePage', {userID: user.id});
+          navigation.navigate('CompleteProfilePage');
         }
       }
     } catch(error) {
