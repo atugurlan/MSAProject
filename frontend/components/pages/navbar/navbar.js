@@ -24,24 +24,24 @@ export default function Navbar({ currentRoute }) {
             {(user != null && !user.isadmin) && (
                 <View style={styles.parentContainer}>
                     <View style={styles.container}>
-                        <TouchableOpacity style={[styles.button, isUserOnPage('UserLandingPage') && styles.activeButton]} onPress={() => navigation.navigate('UserLandingPage', { user: user })}>
+                        <TouchableOpacity style={[styles.button, isUserOnPage('UserLandingPage') && styles.activeButton]} onPress={() => handlePress('UserLandingPage')}>
                             <Ionicons name="home-outline" style={[styles.icon, isUserOnPage('UserLandingPage') && styles.activeIcon]}></Ionicons>
                             <Text style={[styles.buttonText, isUserOnPage('UserLandingPage') && styles.activeButtonText]}>Home</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={[styles.button, isUserOnPage('AllForumsPage') && styles.activeButton]} onPress={() => navigation.navigate('AllForumsPage', { userInfo: user })}>
+                        <TouchableOpacity style={[styles.button, isUserOnPage('AllForumsPage') && styles.activeButton]} onPress={() => handlePress('AllForumsPage')}>
                             <Ionicons name="document-text-outline" style={[styles.icon, isUserOnPage('AllForumsPage') && styles.activeIcon]}></Ionicons>
                             <Text style={[styles.buttonText, isUserOnPage('AllForumsPage') && styles.activeButtonText]}>Forums</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.button}>
-                            <Ionicons name="person-outline" style={styles.icon}></Ionicons>
-                            <Text style={styles.buttonText}>Profile</Text>
+                        <TouchableOpacity style={[styles.button, isUserOnPage('ProfilePage') && styles.activeButton]} onPress={() => handlePress('ProfilePage')}>
+                            <Ionicons name="person-outline" style={[styles.icon, isUserOnPage('ProfilePage') && styles.activeIcon]}></Ionicons>
+                            <Text style={[styles.buttonText, isUserOnPage('ProfilePage') && styles.activeButtonText]}>Profile</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.button}>
-                            <Ionicons name="log-out-outline" style={styles.icon}></Ionicons>
-                            <Text style={styles.buttonText}>Log out</Text>
+                        <TouchableOpacity style={[styles.button, isUserOnPage('LogoutPage') && styles.activeButton]} onPress={() => handlePress('LogoutPage')}>
+                            <Ionicons name="log-out-outline" style={[styles.icon, isUserOnPage('LogoutPage') && styles.activeIcon]}></Ionicons>
+                            <Text style={[styles.buttonText, isUserOnPage('LogoutPage') && styles.activeButtonText]}>Log out</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

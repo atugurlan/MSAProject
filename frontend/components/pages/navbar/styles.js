@@ -16,7 +16,6 @@ export const styles = StyleSheet.create({
         borderRadius: 10,
         width: screenWidth * 0.9,
         height: screenHeight * 0.07,
-        bottom: 10,
     },
     button: {
         alignItems: 'center',

@@ -19,6 +19,8 @@ import ForumPage from "./user/forum/ForumPage";
 import AddQuestionPage from "./user/addQuestion/AddQuestionPage";
 import SeeConversationPage from "./user/seeConversation/SeeConversationPage";
 import Navbar from "./pages/navbar/navbar";
+import ProfilePage from "./user/profile/ProfilePage";
+import LogoutPage from "./pages/logout/LogoutPage";
 
 export { UserProvider,
          HomePage,
@@ -40,5 +42,7 @@ export { UserProvider,
          ForumPage,
          AddQuestionPage,
          SeeConversationPage,
-         Navbar
+         Navbar,
+         ProfilePage,
+         LogoutPage
          };

@@ -21,7 +21,9 @@ import { UserProvider,
          ForumPage,
          AddQuestionPage,
          SeeConversationPage,
-         Navbar
+         Navbar,
+         ProfilePage,
+         LogoutPage
         } from './components';
 import { useState } from 'react';
 
@@ -58,6 +60,8 @@ export default function App() {
           <Stack.Screen name="ForumPage" component={ForumPage} />
           <Stack.Screen name="AddQuestionPage" component={AddQuestionPage} />
           <Stack.Screen name="SeeConversationPage" component={SeeConversationPage} />
+          <Stack.Screen name="ProfilePage" component={ProfilePage} />
+          <Stack.Screen name="LogoutPage" component={LogoutPage} />
         </Stack.Navigator>
         <Navbar currentRoute={currentRoute}/>
       </NavigationContainer>
