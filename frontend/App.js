@@ -21,6 +21,7 @@ import { UserProvider,
          ForumPage,
          AddQuestionPage,
          SeeConversationPage,
+         Navbar
         } from './components';
 
 const Stack = createStackNavigator();
@@ -50,6 +51,7 @@ export default function App() {
           <Stack.Screen name="AddQuestionPage" component={AddQuestionPage} />
           <Stack.Screen name="SeeConversationPage" component={SeeConversationPage} />
         </Stack.Navigator>
+        <Navbar />
       </NavigationContainer>
     </UserProvider>
   );
