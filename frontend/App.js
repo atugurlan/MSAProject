@@ -23,13 +23,21 @@ import { UserProvider,
          SeeConversationPage,
          Navbar
         } from './components';
+import { useState } from 'react';
 
 const Stack = createStackNavigator();
 
 export default function App() {
+  const [currentRoute, setCurrentRoute] = useState('HomePage');
+
   return (
     <UserProvider>
-      <NavigationContainer>
+      <NavigationContainer
+        onStateChange={(state) => {
+          const route = state.routes[state.index];
+          setCurrentRoute(route.name);
+        }}
+      >
         <Stack.Navigator HomePageRoute='homepage' screenOptions={{headerShown:false}}>
           <Stack.Screen name='HomePage' component={HomePage} />
           <Stack.Screen name="LoginPage" component={LoginPage} />
@@ -51,7 +59,7 @@ export default function App() {
           <Stack.Screen name="AddQuestionPage" component={AddQuestionPage} />
           <Stack.Screen name="SeeConversationPage" component={SeeConversationPage} />
         </Stack.Navigator>
-        <Navbar />
+        <Navbar currentRoute={currentRoute}/>
       </NavigationContainer>
     </UserProvider>
   );
