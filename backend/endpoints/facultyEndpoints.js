@@ -16,6 +16,22 @@ router.get('/faculties', async (req, res) => {
 });
 
 
+router.get('/faculty', async (req, res) => {
+    const { id } = req.query;
+
+    try {
+        const result = await pool.query(
+            'SELECT * FROM faculties WHERE id = $1;',
+            [id]
+        );
+        res.json(result.rows);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+
 router.post('/faculties', async (req, res) => {
     const { name, shortName } = req.body;
 

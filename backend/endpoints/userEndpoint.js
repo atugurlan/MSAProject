@@ -118,4 +118,37 @@ router.put("/users/completeProfile", async (req, res) => {
     }
 })
 
+
+router.put("/users/modifyProfile", async (req, res) => {
+    const { userID, faculty, department, year, selectedSubjects } = req.body;
+
+    console.log(faculty);
+
+    if( !faculty ) {
+        return res.status(400).json({ message: 'All fiels are required and should be filled.'});
+    }
+
+    try {
+        const userRows = await pool.query( 
+            "SELECT * FROM users WHERE id = $1",
+            [userID]
+        );
+
+        if( userRows.rowCount !== 1 ) {
+            res.status(400).json({ message: "User does not exist" });
+        }
+
+        const result = await pool.query(
+            "UPDATE users SET facultyid = $1, department = $2, year = $3, subjects = $4 WHERE id = $5",
+            [faculty, department, year, selectedSubjects, userID]
+        );        
+
+        res.status(200).json({ message: "Successfully changed profile information" });
+    } catch(error) {
+        console.log(error);
+        res.status(500).json({ message: "Failed to updated information" })
+    }
+})
+
+
 module.exports = router;
