@@ -38,4 +38,20 @@ router.post('/departments', async (req, res) => {
 });
 
 
+router.get('/departmentInformation', async (req, res) => {
+    const { department_id } = req.query;
+
+    try {
+        const result = await pool.query(
+            'SELECT * FROM departments WHERE department_id = $1;',
+            [department_id]
+        );
+        res.json(result.rows);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+
 module.exports = router;
