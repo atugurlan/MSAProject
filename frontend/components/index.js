@@ -21,6 +21,7 @@ import SeeConversationPage from "./user/seeConversation/SeeConversationPage";
 import Navbar from "./pages/navbar/navbar";
 import ProfilePage from "./user/profile/ProfilePage";
 import LogoutPage from "./pages/logout/LogoutPage";
+import ChangePasswordPage from "./user/changePassword/ChangePassword";
 
 export { UserProvider,
          HomePage,
@@ -44,5 +45,6 @@ export { UserProvider,
          SeeConversationPage,
          Navbar,
          ProfilePage,
-         LogoutPage
+         LogoutPage,
+         ChangePasswordPage
          };

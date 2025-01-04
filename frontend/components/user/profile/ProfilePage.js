@@ -8,7 +8,7 @@ import { styles } from './styles';
 import axios from 'axios';
 import { BASE_URL } from '@env';
 
-export default function ProfilePage() {
+export default function ProfilePage({ navigation }) {
     const { user } = useUser();
 
     const [semester1Subjects, setSemester1Subjects] = useState([]);
@@ -220,13 +220,6 @@ export default function ProfilePage() {
         try {
             let subjectID = editedSubjects.map((s) => s.value);
 
-            console.log(editedFacultyID);
-            console.log(editedFaculty);
-            console.log(editedDepartmentID);
-            console.log(editedDepartment);
-            console.log(editedYear);
-            console.log(editedSubjects);
-
             const response = await axios.put(
                 modify_profile_api_url,
                 {
@@ -314,7 +307,7 @@ export default function ProfilePage() {
                             {isEditing ? (
                                 <></>
                             ) : (
-                                <TouchableOpacity>
+                                <TouchableOpacity onPress={() => { navigation.navigate('ChangePasswordPage') }}>
                                     <Text style={styles.changePasswordText}>Change password</Text>
                                 </TouchableOpacity>
                             )}
