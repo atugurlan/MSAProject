@@ -48,14 +48,14 @@ const SubjectsHandlingPage = ({ route, navigation }) => {
   }, []);
 
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>{departmentName}</Text>
       </View>
 
       <View>
-        <TouchableOpacity onPress={() => navigation.navigate('AddSubjectPage', { departmentID: departmentID })}>
-          <Text>Add New Subject</Text>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('AddSubjectPage', { departmentID: departmentID })}>
+          <Text style={styles.buttonText}>Add New Subject</Text>
         </TouchableOpacity>
       </View>
 
@@ -73,10 +73,8 @@ const SubjectsHandlingPage = ({ route, navigation }) => {
                   onPress={() => navigation.navigate('SubjectInformationPage', { subject })}
                 >
                   <View style={styles.leftSide}>
-                    <Text style={styles.text}>{subject.subject_id}</Text>
                     <Text style={styles.text}>{subject.name}</Text>
                   </View>
-                  <Ionicons name="arrow-forward" style={styles.icon} />
                 </TouchableOpacity>
               ))
             ) : (
