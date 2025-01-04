@@ -24,7 +24,8 @@ import {
   SeeConversationPage,
   Navbar,
   ProfilePage,
-  LogoutPage
+  LogoutPage,
+  ChangePasswordPage
 } from './components';
 import { useState } from 'react';
 import { LogoutProvider } from './components/context/LogoutContext';
@@ -64,6 +65,7 @@ export default function App() {
             <Stack.Screen name="AddQuestionPage" component={AddQuestionPage} />
             <Stack.Screen name="SeeConversationPage" component={SeeConversationPage} />
             <Stack.Screen name="ProfilePage" component={ProfilePage} />
+            <Stack.Screen name="ChangePasswordPage" component={ChangePasswordPage} />
           </Stack.Navigator>
           <Navbar currentRoute={currentRoute} />
           <LogoutPage />

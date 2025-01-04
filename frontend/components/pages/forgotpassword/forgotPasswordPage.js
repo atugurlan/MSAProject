@@ -34,7 +34,7 @@ export default function ForgotPasswordPage() {
         Alert.alert("Succes", "The password was changed.")
         setEmail('');
         setPassword('');
-        setConfirmPassowrd('');
+        setConfirmPassword('');
     } catch(error) {
         console.log(error.message);
         Alert.alert('Error', 'Could not change the password');
