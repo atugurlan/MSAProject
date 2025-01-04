@@ -4,9 +4,6 @@ import { styles } from './styles';
 import { useUser } from '../../context/UserContext';
 
 export default function UserLandingPage({ navigation }) {
-  const user = useUser();
-  const userInfo = user.user;
-
   return (
     <View style={styles.container}>
       <Text>User Landing Page</Text>
