@@ -15,7 +15,7 @@ export default function SeeConversationPage({ route }) {
     const [information, setInformation] = useState(null);
     const [files, setFiles] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [modalImage, setModalImage] = useState(null); 
+    const [modalImage, setModalImage] = useState(null);
     const [selectedImageIndex, setSelectedImageIndex] = useState(null);
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [showAllImages, setShowAllImages] = useState(false);
@@ -72,6 +72,8 @@ export default function SeeConversationPage({ route }) {
 
     const firstThreeFiles = files.slice(0, 3);
 
+    const shouldAddMarginToAnswers = files.length <= 3;
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>{information.question_title}</Text>
@@ -95,9 +97,9 @@ export default function SeeConversationPage({ route }) {
                                         source={{ uri: `data:image/png;base64,${item.base64}` }}
                                         style={styles.thumbnail}
                                     />
-                                    ) : (
-                                        <Text style={styles.unknownFileText}>Unknown file</Text>
-                                    )}
+                                ) : (
+                                    <Text style={styles.unknownFileText}>Unknown file</Text>
+                                )}
                             </TouchableOpacity>
                         );
                     }}
@@ -200,7 +202,7 @@ export default function SeeConversationPage({ route }) {
                 </View>
             </Modal>
 
-            <View style={ {flex: 1} }>
+            <View style={[{ flex: 1 }, shouldAddMarginToAnswers && { marginTop: 50 }]}>
                 <AnswersPage questionID={questionId}></AnswersPage>
             </View>
         </View>
