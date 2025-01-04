@@ -10,9 +10,9 @@ export const LogoutProvider = ({ children }) => {
     
 
     const logout = (setUser, navigation) => {
-        setUser(null);
         hideLogoutModal();
         navigation.navigate('HomePage');
+        setUser(null);
     }
 
     return (
