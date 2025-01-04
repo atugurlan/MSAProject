@@ -14,7 +14,7 @@ export default function AddDepartmentPage({ route, navigation }) {
   const api_url = `${BASE_URL}/api/departments`;
 
   const postDepartment = async () => {
-    if( !name ) {
+    if (!name) {
       Alert.alert('Fields are mandatory');
       return;
     }
@@ -32,20 +32,20 @@ export default function AddDepartmentPage({ route, navigation }) {
       setName('');
 
       navigation.navigate('ManageDepartmentsPage');
-    } catch(error) {
+    } catch (error) {
       Alert.alert('Error', 'Could not create the department');
     }
   }
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.title}>Create a new Department</Text>
 
-      <View style={styles.forum}>
+      <View>
         <View style={styles.inputContainer}>
           <Text>Name</Text>
-      
-          <TextInput 
+
+          <TextInput
             style={styles.input}
             value={name}
             onChangeText={setName}
@@ -54,18 +54,18 @@ export default function AddDepartmentPage({ route, navigation }) {
 
         <View style={styles.inputContainer}>
           <Text>Years</Text>
-          
-          <TextInput 
+
+          <TextInput
             style={styles.input}
             value={years}
             onChangeText={setYears}
           />
         </View>
-
-        <TouchableOpacity style={styles.button} onPress={postDepartment}>
-          <Text style={styles.buttonText}>Add Department</Text>
-        </TouchableOpacity>
       </View>
+
+      <TouchableOpacity style={styles.button} onPress={postDepartment}>
+        <Text style={styles.buttonText}>Add Department</Text>
+      </TouchableOpacity>
     </View>
   );
 };

@@ -21,15 +21,15 @@ export default function AddSubjectPage({ route, navigation }) {
   const api_url = `${BASE_URL}/api/subjectsFromDepartment`;
 
   const handleAddLabAssistant = () => {
-    if (newLabAssistant.trim() === '') return; 
+    if (newLabAssistant.trim() === '') return;
     setLabAssistants([...labAssistants, newLabAssistant.trim()]);
-    setNewLabAssistant(''); 
+    setNewLabAssistant('');
   };
 
   const postSubject = async () => {
     isEnabledString = isEnabled ? "true" : "false";
 
-    if ( !name || !proffesor || !year || !semester || !isEnabledString || labAssistants.length == 0 ) {
+    if (!name || !proffesor || !year || !semester || !isEnabledString || labAssistants.length == 0) {
       Alert.alert('Fields are mandatory');
       return;
     }
@@ -56,20 +56,20 @@ export default function AddSubjectPage({ route, navigation }) {
       setIsEnabled(false);
 
       navigation.navigate('SubjectsHandlingPage');
-    } catch(error) {
+    } catch (error) {
       Alert.alert('Error', 'Could not create the subject');
     }
   }
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.title}>Create a new Subject</Text>
 
       <View style={styles.forum}>
         <View style={styles.inputContainer}>
           <Text>Name</Text>
-      
-          <TextInput 
+
+          <TextInput
             style={styles.input}
             value={name}
             onChangeText={setName}
@@ -78,8 +78,8 @@ export default function AddSubjectPage({ route, navigation }) {
 
         <View style={styles.inputContainer}>
           <Text>Proffesor's Name</Text>
-          
-          <TextInput 
+
+          <TextInput
             style={styles.input}
             value={proffesor}
             onChangeText={setProffesor}
@@ -88,8 +88,8 @@ export default function AddSubjectPage({ route, navigation }) {
 
         <View style={styles.inputContainer}>
           <Text>Year</Text>
-          
-          <TextInput 
+
+          <TextInput
             style={styles.input}
             value={year}
             onChangeText={setYear}
@@ -98,8 +98,8 @@ export default function AddSubjectPage({ route, navigation }) {
 
         <View style={styles.inputContainer}>
           <Text>Semester</Text>
-          
-          <TextInput 
+
+          <TextInput
             style={styles.input}
             value={semester}
             onChangeText={setSemester}
@@ -107,38 +107,36 @@ export default function AddSubjectPage({ route, navigation }) {
         </View>
 
         <View style={styles.inputContainer}>
-            <Text>Is active? </Text>
-          
-            <TouchableOpacity onPress={() => setIsEnabled(!isEnabled)}>
-                <Ionicons
-                    name={isEnabled ? 'checkbox-outline' : 'square-outline'}
-                    size={24}
-                    color={isEnabled ? 'green' : 'gray'}
-                />
-                <Text style={styles.checkboxText}>
-                    {isEnabled ? 'Active' : 'Inactive'}
-                </Text>
-            </TouchableOpacity>
+          <Text>Is active?</Text>
+          <TouchableOpacity onPress={() => setIsEnabled(!isEnabled)} style={styles.checkboxContainer}>
+            <Ionicons
+              name={isEnabled ? 'checkbox-outline' : 'square-outline'}
+              size={24}
+              color={isEnabled ? 'green' : 'gray'}
+            />
+            <Text style={styles.checkboxText}>{isEnabled ? 'Active' : 'Inactive'}</Text>
+          </TouchableOpacity>
         </View>
 
+
         <View style={styles.inputContainer}>
-            <Text>Lab Assistants</Text>
-            <TextInput
-                value={newLabAssistant}
-                onChangeText={setNewLabAssistant}
-                style={styles.input}
-            />
-            <TouchableOpacity onPress={handleAddLabAssistant}>
-                <Text style={styles.addButtonText}>+</Text>
-            </TouchableOpacity>
+          <Text>Lab Assistants</Text>
+          <TextInput
+            value={newLabAssistant}
+            onChangeText={setNewLabAssistant}
+            style={styles.input}
+          />
+          <TouchableOpacity onPress={handleAddLabAssistant}>
+            <Text style={styles.addButtonText}>+</Text>
+          </TouchableOpacity>
         </View>
 
         <View>
-            {labAssistants.map((assistant, index) => (
-                <View key={index}>
-                    <Text>{assistant}</Text>
-                </View>
-            ))}
+          {labAssistants.map((assistant, index) => (
+            <View key={index}>
+              <Text>{assistant}</Text>
+            </View>
+          ))}
         </View>
 
         <TouchableOpacity style={styles.button} onPress={postSubject}>

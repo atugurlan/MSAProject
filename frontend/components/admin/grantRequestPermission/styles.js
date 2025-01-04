@@ -5,38 +5,18 @@ import { screenWidth, screenHeight } from '../../../config/constants';
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20,
+        paddingHorizontal: 20,
         backgroundColor: colors.white,
+        paddingTop: 30,
     },
     firstRow: {
         flexDirection: 'row',
+        marginBottom: 10,
     },
     title: {
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 20,
-    },
-    filterButton: {
-        marginLeft: 250,
-        right: 10,
-        top: 10,
-    },
-    filterIcon: {
-        fontSize: 20,   
-    },
-    dropdown: {
-        width: 0.25 * screenWidth,
-        right: 0.2 * screenWidth,
-    },
-    filterItem: {
-        flexDirection: 'row',
-    },
-    filterIcon: {
-        fontSize: 20,
-        marginRight: 10,
-    },
-    filterText: {
-        fontSize: 15,
     },
     requestContainer: {
         flexDirection: 'row',
@@ -129,5 +109,13 @@ export const styles = StyleSheet.create({
     },
     loopIcon: {
         fontSize: 20,
-    }
+    },
+    pickerContainer: {
+        borderWidth: 1,
+        borderColor: colors.grey,
+        borderRadius: 5,
+        marginLeft: 10,
+        width: screenWidth * 0.3,
+        right: -screenWidth * 0.3
+    },
 });

@@ -3,6 +3,13 @@ import { colors } from "../../../../config/colors";
 import { screenHeight, screenWidth } from "../../../../config/constants";
 
 export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+    backgroundColor: colors.white,
+  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
@@ -43,4 +50,16 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
+  checkboxContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 5,
+    marginLeft: 10,
+  },
+  checkboxText: {
+    marginLeft: 8,
+    fontSize: 16,
+    color: '#555',
+  },
+  
 });

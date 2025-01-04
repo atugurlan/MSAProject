@@ -54,7 +54,7 @@ export default ManageDepartmentsPage = ({ route, navigation }) => {
 
       <View>
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('AddDepartmentPage', { facultyID: id })}>
-          <Text>Add New Department</Text>
+          <Text style={styles.buttonText}>Add New Department</Text>
         </TouchableOpacity>
       </View>
     </View>

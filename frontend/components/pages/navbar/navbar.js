@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Text, TouchableOpacity, View, Keyboard } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useUser } from '../../context/UserContext';
 import { useLogout } from '../../context/LogoutContext';
@@ -10,9 +10,12 @@ import { styles } from './styles';
 
 
 export default function Navbar({ currentRoute }) {
-    const user = useUser().user;
+    const { user } = useUser();
+    const noShowNavBar = ['HomePage', 'SignUpPage', 'LoginPage', 'ForgotPasswordPage'];
     const navigation = useNavigation();
     const { showLogoutModal } = useLogout();
+
+    const [keyboardVisible, setKeyboardVisible] = useState(false);
 
     const handlePress = (page) => {
         navigation.navigate(page);
@@ -20,6 +23,20 @@ export default function Navbar({ currentRoute }) {
 
     const isUserOnPage = (page) => {
         return currentRoute === page;
+    }
+
+    useEffect(() => {
+        const showSubscription = Keyboard.addListener('keyboardDidShow', () => setKeyboardVisible(true));
+        const hideSubscription = Keyboard.addListener('keyboardDidHide', () => setKeyboardVisible(false));
+
+        return () => {
+            showSubscription.remove();
+            hideSubscription.remove();
+        };
+    }, []);
+
+    if (keyboardVisible || noShowNavBar.includes(currentRoute)) {
+        return null;
     }
 
     return (

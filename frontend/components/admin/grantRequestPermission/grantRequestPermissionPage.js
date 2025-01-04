@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Image, TouchableOpacity, Alert, Modal } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { Picker } from '@react-native-picker/picker';
 
 import { styles } from './styles';
 
@@ -46,7 +47,7 @@ export default function GrantRequestPermissionPage() {
 
     const filterRequests = (filterStatus) => {
         setSelectedFilter(filterStatus);
-        if(filterStatus === 'all') {
+        if (filterStatus === 'all') {
             setFilteredRequests(requests);
         }
         else {
@@ -69,7 +70,7 @@ export default function GrantRequestPermissionPage() {
 
             Alert.alert('Succes', 'The status was modified');
             fetchRequests();
-        } catch(error) {
+        } catch (error) {
             console.log(error);
             Alert.alert('Error', 'Could not modify the status')
         }
@@ -95,30 +96,15 @@ export default function GrantRequestPermissionPage() {
             <View style={styles.firstRow}>
                 <Text style={styles.title}>Requests:</Text>
 
-                <View style={styles.filterButton}>
-                    <TouchableOpacity onPress={() => setFilterButtonVisible(!filterButtonVisible)}>
-                        <Ionicons name='filter-outline' style={styles.filterIcon}/>
-                    </TouchableOpacity>
-                    {filterButtonVisible && (
-                        <FlatList
-                            style={styles.dropdown}
-                            data={filters}
-                            keyExtractor={(item) => item.key}
-                            renderItem={({ item }) => (
-                                <View>
-                                    <TouchableOpacity onPress={() => filterRequests(item.value)} style={styles.filterItem}>
-                                        <Ionicons 
-                                            name={
-                                                item.value === selectedFilter ? "radio-button-on-outline" : "radio-button-off-outline"
-                                            }
-                                            style={styles.filterIcon} 
-                                        />
-                                        <Text style={styles.filterText}>{item.key}</Text>
-                                    </TouchableOpacity>
-                                </View>
-                            )}
-                        />
-                    )}
+                <View style={styles.pickerContainer}>
+                    <Picker
+                        selectedValue={selectedFilter}
+                        onValueChange={(itemValue) => filterRequests(itemValue)}
+                    >
+                        {filters.map((filter) => (
+                            <Picker.Item key={filter.key} label={filter.key} value={filter.value} />
+                        ))}
+                    </Picker>
                 </View>
             </View>
 
@@ -147,7 +133,7 @@ export default function GrantRequestPermissionPage() {
                             </View>
                         </View>
 
-                        {item.status === 'pending' && 
+                        {item.status === 'pending' &&
                             <View style={styles.rightView}>
                                 <TouchableOpacity style={styles.acceptButton} onPress={() => {
                                     changeStatus(item.id, 'accept');
@@ -162,17 +148,17 @@ export default function GrantRequestPermissionPage() {
                             </View>
                         }
 
-                        {item.status === 'accept' && 
+                        {item.status === 'accept' &&
                             <View style={styles.rightView}>
                                 <Text style={styles.statusText}>The request was approved.</Text>
                             </View>
                         }
 
-                        {item.status === 'decline' && 
+                        {item.status === 'decline' &&
                             <View style={styles.rightView}>
                                 <Text style={styles.statusText}>The request was rejected.</Text>
                             </View>
-                        }   
+                        }
                     </View>
                 )}
             />

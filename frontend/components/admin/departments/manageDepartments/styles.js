@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
+        backgroundColor: colors.white,
     },
     header: {
         marginBottom: 20,
@@ -19,6 +20,8 @@ export const styles = StyleSheet.create({
     },
     listContainer: {
         width: screenWidth,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     leftSide: {
         width: screenWidth * 0.8,
@@ -27,17 +30,17 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
     listItem: {
-        width: screenWidth,
+        width: screenWidth * 0.9,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         marginVertical: 10,
         padding: 15,
         borderRadius: 10,
+        borderBottomWidth: 1,
     },
     text: {
         fontSize: 16,
-        // textAlign: 'center',
         flex: 1,
     },
     button: {
@@ -47,12 +50,14 @@ export const styles = StyleSheet.create({
         marginTop: 20,
         paddingVertical: 10,
         paddingHorizontal: 10,
-        backgroundColor: colors.white,
-        borderColor: colors.grey, 
-        borderWidth: 2, 
+        backgroundColor: colors.red,
         borderRadius: 10, 
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    buttonText: {
+        color: colors.white,
+        fontSize: 16,
     },
     icon: {
         fontSize: 20,
