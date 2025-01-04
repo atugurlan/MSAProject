@@ -10,7 +10,8 @@ import { styles } from './styles';
 
 
 export default function Navbar({ currentRoute }) {
-    const user = useUser().user;
+    const { user } = useUser();
+    const noShowNavBar = ['HomePage', 'SignUpPage', 'LoginPage', 'ForgotPasswordPage'];
     const navigation = useNavigation();
     const { showLogoutModal } = useLogout();
 
@@ -34,8 +35,7 @@ export default function Navbar({ currentRoute }) {
         };
     }, []);
 
-
-    if (keyboardVisible) {
+    if (keyboardVisible || noShowNavBar.includes(currentRoute)) {
         return null;
     }
 
