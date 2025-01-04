@@ -16,8 +16,9 @@ app.get('/', (req, res) => {
 });
 
 const PORT = process.env.SERVER_PORT | 3000;
+const HOST = process.env.DB_HOST
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on http://${HOST}:${PORT}`);
 });
 
 const requestEndpoints = require('./endpoints/requestEndpoints');
