@@ -11,7 +11,7 @@ import { BASE_URL } from '@env';
 import { useUser } from '../../context/UserContext';
 
 export default function AddQuestionPage({ navigation, route }) {
-    const { subjectID } = route.params;
+    const { subjectID, subjectName } = route.params;
     const { user } = useUser();
 
     const [questionTitle, setQuestionTitle] = useState('');
@@ -54,7 +54,7 @@ export default function AddQuestionPage({ navigation, route }) {
                     name: file.name || 'Unnamed file',
                     type: getFileType(file.uri),
                 }));
-                
+
                 setFiles((prevFiles) => [...prevFiles, ...newFiles]);
             }
         } catch (error) {
@@ -95,11 +95,11 @@ export default function AddQuestionPage({ navigation, route }) {
             files.map(async (file) => {
                 console.log(file);
                 const base64 = await readFileAsBase64(file.uri);
-                
+
                 if (!base64) {
                     Alert.alert('Error', `Failed to process file: ${file.name}`);
                 }
-                
+
                 return {
                     type: getFileType(file.uri),
                     uri: file.uri,
@@ -122,33 +122,39 @@ export default function AddQuestionPage({ navigation, route }) {
                 files: filesBase64
             },
         );
-      
-        Alert.alert('Success.');
+
         setQuestionTitle('');
         setQuestionDescription('');
         setFiles([]);
+        navigation.navigate('ForumPage', { subjectID: subjectID, subjectName: subjectName });
     };
 
     return (
-        <View>
-            <Text>Add Question Page</Text>
+        <View style={styles.container}>
+            <Text style={styles.title}>Add Question Page</Text>
 
-            <TextInput
-                placeholder="Enter the question title"
-                multiline
-                value={questionTitle}
-                onChangeText={setQuestionTitle}
-            />
+            <View style={styles.input}>
+                <TextInput
+                    placeholder="Enter the question title"
+                    multiline
+                    value={questionTitle}
+                    style={styles.uploadText}
+                    onChangeText={setQuestionTitle}
+                />
+            </View>
 
-            <TextInput
-                placeholder="Enter the question description"
-                multiline
-                value={questionDescription}
-                onChangeText={setQuestionDescription}
-            />
+            <View style={styles.input}>
+                <TextInput
+                    placeholder="Enter the question description"
+                    multiline
+                    value={questionDescription}
+                    style={styles.uploadText}
+                    onChangeText={setQuestionDescription}
+                />
+            </View>
 
-            <View>
-                <Text>Post the question anonymously?</Text>
+            <View style={styles.anonymousContainer}>
+                <Text style={styles.anonymousText}>Post the question anonymously?</Text>
                 <Switch
                     value={isAnonymous}
                     onValueChange={setIsAnonymous}
@@ -156,12 +162,7 @@ export default function AddQuestionPage({ navigation, route }) {
             </View>
 
             <TouchableOpacity
-                style={{
-                    backgroundColor: '#f0f0f0',
-                    padding: 10,
-                    marginBottom: 15,
-                    alignItems: 'center',
-                }}
+                style={styles.filesButton}
                 onPress={pickFiles}
             >
                 <Text>Attach Files</Text>
@@ -172,12 +173,7 @@ export default function AddQuestionPage({ navigation, route }) {
                 keyExtractor={(item) => item.uri}
                 renderItem={({ item }) => (
                     <View
-                        style={{
-                            flexDirection: 'row',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            marginBottom: 10,
-                        }}
+                        style={styles.fileList}
                     >
                         <Text>{item.name}</Text>
                         <TouchableOpacity onPress={() => removeFile(item.uri)}>
@@ -187,8 +183,8 @@ export default function AddQuestionPage({ navigation, route }) {
                 )}
             />
 
-            <TouchableOpacity onPress={handleSubmit}>
-                <Text>Post question</Text>
+            <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+                <Text style={styles.buttonText}>Post question</Text>
             </TouchableOpacity>
         </View>
     );
