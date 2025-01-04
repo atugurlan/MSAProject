@@ -3,15 +3,18 @@ import { colors } from "../../../../config/colors";
 import { screenHeight, screenWidth } from "../../../../config/constants";
 
 export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+    backgroundColor: colors.white,
+  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginTop: 20,
     marginBottom: 20,
-  },
-  forum: {
-    paddingHorizontal: 20,
-    justifyContent: 'center',
   },
   inputContainer: {
     flexDirection: 'row',
@@ -31,6 +34,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   button: {
+    width: screenWidth * 0.6,
     backgroundColor: colors.red,
     paddingVertical: 15,
     borderRadius: 8,
