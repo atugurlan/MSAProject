@@ -41,3 +41,6 @@ app.use('/api', questionEndpoints);
 
 const answerEndpoints = require('./endpoints/answerEndpoints');
 app.use('/api', answerEndpoints);
+
+const likeEndpoints = require('./endpoints/likeEndpoints');
+app.use('/api', likeEndpoints);
