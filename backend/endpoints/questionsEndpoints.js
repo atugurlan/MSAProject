@@ -8,7 +8,7 @@ router.get('/subjectQuestions', async (req, res) => {
 
     try {
         const result = await pool.query(
-            'SELECT * FROM questions WHERE subject_id=$1;',
+            'SELECT * FROM questions WHERE subject_id=$1 order by posted_time;',
             [subjectID]
         );
         res.json(result.rows);
