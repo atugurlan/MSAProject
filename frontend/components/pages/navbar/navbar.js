@@ -11,7 +11,7 @@ import { styles } from './styles';
 
 export default function Navbar({ currentRoute }) {
     const { user } = useUser();
-    const noShowNavBar = ['HomePage', 'SignUpPage', 'LoginPage', 'ForgotPasswordPage'];
+    const noShowNavBar = ['HomePage', 'SignUpPage', 'LoginPage', 'ForgotPasswordPage', 'CompleteProfilePage'];
     const navigation = useNavigation();
     const { showLogoutModal } = useLogout();
 
